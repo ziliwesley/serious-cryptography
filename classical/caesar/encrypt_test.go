@@ -1,27 +1,24 @@
 package caesar
 
 import "testing"
+import "github.com/ziliwesley/serious-cryptography/common"
 
-type Fixture struct {
-	input, expected string
-}
-
-func Test(test *testing.T) {
-	fixtures := []Fixture {
-		{ "abc", "def" },
-		{ "ABC", "DEF" },
-		{ "abcdefghijklmnopqrstuvwxyz", "defghijklmnopqrstuvwxyzabc" },
-		{ "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "DEFGHIJKLMNOPQRSTUVWXYZABC" },
-		{ "ZOO", "CRR" },
-		{ "CAESAR", "FDHVDU" },
+func TestEncrypt(test *testing.T) {
+	fixtures := []common.Fixture {
+		{ Input: "abc", Expected: "def" },
+		{ Input: "ABC", Expected: "DEF" },
+		{ Input: "abcdefghijklmnopqrstuvwxyz", Expected: "defghijklmnopqrstuvwxyzabc" },
+		{ Input: "ABCDEFGHIJKLMNOPQRSTUVWXYZ", Expected: "DEFGHIJKLMNOPQRSTUVWXYZABC" },
+		{ Input: "ZOO", Expected: "CRR" },
+		{ Input: "CAESAR", Expected: "FDHVDU" },
 	}
 	for _, c := range fixtures {
-		output := Encrypt(c.input)
-		if output != c.expected {
+		output := Encrypt(c.Input)
+		if output != c.Expected {
 			test.Errorf("Encrypt(%q) == (%q), %q expected",
-				c.input,
+				c.Input,
 				output,
-				c.expected)
+				c.Expected)
 		}
 	}
 }

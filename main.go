@@ -4,18 +4,13 @@ import "fmt"
 import caeser "github.com/ziliwesley/serious-cryptography/classical/caesar"
 
 func main() {
-	plainText := "CAESAR"
+	plainText := "Hello from Caesar!"
+	cipher := caeser.Encrypt(plainText)
 
-	t := []byte{1, 2, 3, 4}
-	at := make([]byte, len(t))
-	// slice := t[1:]
-	for i := range t {
-		at[i] = t[i]
-	}
+	fmt.Printf("Source text: %s\n", plainText)
+	fmt.Printf("Cipher: %s\n", cipher)
 
-	fmt.Println(at)
+	decrypted := caeser.Decrypt(cipher)
 	
-	fmt.Println(caeser.Encrypt(plainText))
-	
-	fmt.Println("Hello, 世界")
+	fmt.Printf("Decrypted: %s\n", decrypted)
 }
