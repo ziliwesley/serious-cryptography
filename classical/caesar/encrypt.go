@@ -1,5 +1,7 @@
 package caesar
 
+import letterutil "github.com/ziliwesley/serious-cryptography/classical/helpers/letterutil"
+
 // EncryptClassic provides a shortcut to encrypt text by using
 // a static shift of 3
 func EncryptClassic(cipher string) string {
@@ -15,21 +17,7 @@ func Encrypt(src string, shift int32) string {
     output := make([]rune, len(src))
 
     for index, charCode := range src {
-        if (charCode >= 65 && charCode < 91 - shift) ||
-            (charCode >= 97 && charCode < 123 -shift) {
-            // A-W
-            // or
-            // a-w
-            output[index] = charCode + shift
-        } else if (charCode >= 91 - shift && charCode <= 90) ||
-            (charCode >= 123 -shift && charCode <= 122) {
-            // X-Z
-            // or
-            // x-z
-            output[index] = charCode - 26 + shift
-        } else {
-            output[index] = charCode
-        }
+        output[index] = letterutil.ShiftLetter(charCode, shift)
     }
 
     return string(output)

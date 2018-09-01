@@ -1,5 +1,7 @@
 package caesar
 
+import letterutil "github.com/ziliwesley/serious-cryptography/classical/helpers/letterutil"
+
 // DecryptClassic provides a shortcut to decrypt cipher by using
 // a static shift of 3
 func DecryptClassic(cipher string) string {
@@ -12,21 +14,7 @@ func Decrypt(cipher string, shift int32) string {
     output := make([]rune, len(cipher))
 
     for index, charCode := range cipher {
-        if (charCode >= 65 && charCode < 65 + shift) ||
-            (charCode >= 97 && charCode < 97 +shift) {
-            // A-C
-            // or
-            // a-c
-            output[index] = charCode + 26 - shift
-        } else if (charCode >= 65 + shift && charCode <= 90) ||
-            (charCode >= 97 + shift && charCode <= 122) {
-            // D-Z
-            // or
-            // d-z
-            output[index] = charCode - shift
-        } else {
-            output[index] = charCode
-        }
+        output[index] = letterutil.ShiftLetter(charCode, -shift)
     }
 
     return string(output)
