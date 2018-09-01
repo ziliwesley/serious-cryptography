@@ -1,6 +1,7 @@
 package caesar
 
-// Encrypt cipher using a shift of 3
+// EncryptClassic provides a shortcut to encrypt text by using
+// a static shift of 3
 func EncryptClassic(cipher string) string {
     return Encrypt(cipher, 3)
 }

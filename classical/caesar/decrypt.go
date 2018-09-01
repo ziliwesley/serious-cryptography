@@ -1,6 +1,7 @@
 package caesar
 
-// Decrypt cipher using a shift of 3
+// DecryptClassic provides a shortcut to decrypt cipher by using
+// a static shift of 3
 func DecryptClassic(cipher string) string {
     return Decrypt(cipher, 3)
 }
