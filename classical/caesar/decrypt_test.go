@@ -1,7 +1,19 @@
 package caesar
 
+import "fmt"
 import "testing"
 import "github.com/ziliwesley/serious-cryptography/common"
+
+
+func ExampleDecrypt() {
+    fmt.Println(Decrypt("ifmmp", 1))
+    // Output: hello
+}
+
+func ExampleDecryptClassic() {
+    fmt.Println(DecryptClassic("FDHVDU"))
+    // Output: CAESAR
+}
 
 func TestDecrypt(test *testing.T)  {
     fixtures := []common.Fixture {
