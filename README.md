@@ -6,3 +6,7 @@
 
 - The Caesar Cipher [classical/caesar](classical/caesar)
 - The Vigenère Cipher [classical/vigenere](classical/vigenere)
+
+## Other
+
+- One-Time Pad [modern/otp](modern/otp)
