@@ -10,3 +10,9 @@
 ## Other
 
 - One-Time Pad [modern/otp](modern/otp)
+
+
+## Todos
+
+- [ ] Add a `Typescript` version of this project to learn typescript
+- [ ] Implement `otp-lcg`
