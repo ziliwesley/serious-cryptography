@@ -1,6 +1,10 @@
 package lcg
 
-import "time"
+import (
+	"encoding/binary"
+    "time"
+    "math"
+)
 
 // RandomNumberGenerator define basic params of
 // a *Linear Congruential Generator*
@@ -25,6 +29,22 @@ func (rng *RandomNumberGenerator) NextInt() int64 {
 func (rng *RandomNumberGenerator) NextFloat() float64 {
     random := float64(rng.NextInt()) / float64(rng.modulus)
     return random
+}
+
+// RandomBytes generate specific size of random bytes
+func (rng *RandomNumberGenerator) RandomBytes(len int32) []byte {
+    // NOTE: modulus has to be lower or equal to 2^32
+    uint32SliceLen := int(math.Ceil(float64(len) / float64(4)))
+    output := make([]byte, uint32SliceLen * 4)
+
+    for index := 0; index < uint32SliceLen; index++ {
+        // Generate a random uint32 and count it as 4 bytes 
+        randomNumber := uint32(rng.NextInt())
+        startIndex := index * 4
+        binary.LittleEndian.PutUint32(output[startIndex:], randomNumber)
+    }
+
+    return output[:len]
 }
 
 // SetSeed set the seed for subsequent rng calculations
