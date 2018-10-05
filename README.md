@@ -15,4 +15,4 @@
 ## Todos
 
 - [ ] Add a `Typescript` version of this project to learn typescript
-- [ ] Implement `otp-lcg`
+- [x] Implement `otp-lcg`

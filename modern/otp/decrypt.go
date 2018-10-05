@@ -5,11 +5,13 @@
 
 package otp
 
-import "encoding/hex"
-import "fmt"
+import (
+    "encoding/hex"
+    "fmt"
+    "github.com/ziliwesley/serious-cryptography/random/lcg"
+)
 
-// Decrypt method of OTP using XOR
-func Decrypt(cipher string, key string) string {
+func decryptWithBytes(cipher string, keyBytes []byte) string {
     cipherBytes, err := hex.DecodeString(cipher)
 
     if (err != nil) {
@@ -18,12 +20,6 @@ func Decrypt(cipher string, key string) string {
     }
 
     output := make([]byte, len(cipherBytes))
-    keyBytes, err := hex.DecodeString(key)
-
-    if (err != nil) {
-        fmt.Println("Invalid key provided")
-        return ""
-    }
 
     for index := 0; index < len(output); index++ {
         srcCharCode := cipherBytes[index]
@@ -34,4 +30,28 @@ func Decrypt(cipher string, key string) string {
     }
 
     return string(output)
+}
+
+// DecryptWithRandomBytes method decrypt a cipher using 
+// OTP(XOR) with a number as RNG seed to generate pseudo 
+// random bytes as key
+func DecryptWithRandomBytes(cipher string, seed int64) string {
+    rng := lcg.GetRandomNumberGenerator()
+    rng.SetSeed(seed)
+    keyBytes := rng.RandomBytes(int32(len(cipher) / 2))
+
+    return decryptWithBytes(cipher, keyBytes)
+}
+
+// Decrypt method decrypt a cipher using OTP(XOR) 
+// with bytes in hex as key
+func Decrypt(cipher string, key string) string {
+    keyBytes, err := hex.DecodeString(key)
+
+    if (err != nil) {
+        fmt.Println("Invalid key provided")
+        return ""
+    }
+
+    return decryptWithBytes(cipher, keyBytes)
 }

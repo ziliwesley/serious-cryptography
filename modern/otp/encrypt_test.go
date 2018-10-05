@@ -9,6 +9,11 @@ func ExampleEncrypt() {
     // Output: 3c3b6eed4f
 }
 
+func ExampleEncryptWithRandomBytes() {
+    fmt.Println(EncryptWithRandomBytes("destiny", 1538754611))
+    // Output: 924a7326b408ea
+}
+
 func TestEncrypt(test *testing.T) {
     fixtures := []common.Fixture {
         { Input: "hello", Expected: "3c3b6eed4f" },

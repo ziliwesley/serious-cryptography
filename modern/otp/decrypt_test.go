@@ -9,6 +9,11 @@ func ExampleDecrypt() {
     // Output: hello
 }
 
+func ExampleDecryptWithRandomBytes() {
+    fmt.Println(DecryptWithRandomBytes("924a7326b408ea", 1538754611))
+    // Output: destiny
+}
+
 func TestDecrypt(test *testing.T) {
     fixtures := []common.Fixture {
         { Input: "07ad19a9d6", Expected: "hello" },

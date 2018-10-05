@@ -52,9 +52,26 @@ func (rng *RandomNumberGenerator) SetSeed(seed int64) {
     rng.seed = seed
 }
 
-// GetRandomNumberGenerator return an rng instance using lcg algorithm
-func GetRandomNumberGenerator(a, c, modulus int64) RandomNumberGenerator {
+// GetRandomNumberGeneratorCustom return an rng instance 
+// with custom params using lcg algorithm
+func GetRandomNumberGeneratorCustom(a, c, modulus int64) RandomNumberGenerator {
     seed := time.Now().UnixNano()
-    rng := RandomNumberGenerator{seed, a, c, modulus}
+    rng := RandomNumberGenerator{
+        seed, a, c, modulus,
+    }
     return rng
+}
+
+// GetRandomNumberGenerator return an rng instance 
+// with default params using lcg algorithm
+// (Source: Numerical Recipes)[https://en.wikipedia.org/wiki/Linear_congruential_generator]
+func GetRandomNumberGenerator() RandomNumberGenerator {
+    return GetRandomNumberGeneratorCustom(
+        // a
+        1664525,
+        // c
+        1013904223,
+        // modulus
+        int64(math.Pow(2, 32)),
+    )
 }
