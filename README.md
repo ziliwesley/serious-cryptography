@@ -1,3 +1,5 @@
+[![Travis CI Build Status](https://img.shields.io/travis/ziliwesley/serious-cryptography/master.svg?style=flat-square)](https://travis-ci.org/ziliwesley/serious-cryptography)
+
 # About the book
 
 [Serious Cryptography - A Practical Introduction to Modern Encryption](https://nostarch.com/seriouscrypto) by Jean-Philippe Aumasson
@@ -11,8 +13,7 @@
 
 - One-Time Pad [modern/otp](modern/otp)
 
+## Implementation in other languages:
 
-## Todos
+- [TypeScript](https://github.com/ziliwesley/serious-cryptography-ts)
 
-- [ ] Add a `Typescript` version of this project to learn typescript
-- [x] Implement `otp-lcg`

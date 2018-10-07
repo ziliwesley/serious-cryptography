@@ -1,10 +1,12 @@
 package main
 
-import "fmt"
-import caeser "github.com/ziliwesley/serious-cryptography/classical/caesar"
-import "encoding/hex"
-import "math/rand"
-import "time"
+import (
+    "fmt"
+    caeser "github.com/ziliwesley/serious-cryptography/classical/caesar"
+    "encoding/hex"
+    "math/rand"
+    "time"
+)
 
 func main() {
     plainText := "Hello from Caesar!"
