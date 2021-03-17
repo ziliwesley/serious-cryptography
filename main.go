@@ -1,11 +1,11 @@
 package main
 
 import (
-    "fmt"
-    caeser "github.com/ziliwesley/serious-cryptography/classical/caesar"
-    "encoding/hex"
-    "math/rand"
-    "time"
+	"encoding/hex"
+	"fmt"
+	"math/rand"
+	caeser "serious-cryptography/internal/classical/caesar"
+	"time"
 )
 
 func main() {

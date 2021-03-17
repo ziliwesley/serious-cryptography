@@ -2,11 +2,13 @@ package letterutil
 
 // LowerCaseA equals to ascii code of letter 'a'
 const LowerCaseA = 97
+
 // LowerCaseZ equals to ascii code of letter 'z'
 const LowerCaseZ = 122
 
 // UpperCaseA equals to ascii code of letter 'A'
 const UpperCaseA = 65
+
 // UpperCaseZ equals to ascii code of letter 'Z'
 const UpperCaseZ = 90
 

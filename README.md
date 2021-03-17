@@ -15,5 +15,5 @@
 
 ## Implementation in other languages:
 
-- [TypeScript](https://github.com/ziliwesley/serious-cryptography-ts)
+- [TypeScript](https://serious-cryptography-ts)
 
